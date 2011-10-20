@@ -22,9 +22,9 @@
 		<p>For infrequent notes about our progress, or early access to prototypes, sign up below.</p>
 
 		<div id="form">
-			<form name="formMail" action='email.php' method='post' enctype='multipart/form-data'>
+			<form name="formMail" action='email.php' method='post'>
 			<input type="text" name="email" id="email" class='text_box'>
-			<input type='submit' id="submit" value='Request early access' class='form_button'>
+			<input type='submit' id="submit" name="submit" value='Request early access' class='form_button'>
 			</form>
 		</div>
 
