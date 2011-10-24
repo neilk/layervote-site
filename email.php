@@ -1,5 +1,5 @@
 <?php
-if (!isset($_POST['submit']) || !isset($_POST['email'])) {
+if (!isset($_POST['email'])) {
 	exit;
 }
 
@@ -10,7 +10,7 @@ if (preg_match($headerInjection, $signup)) {
 	exit;
 }
 
-$to = "neilk@brevity.org";
+$recipients = file('../layervote-recipients.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $subject = "LayerVote signup - $signup";
 
 // compose headers
@@ -23,7 +23,9 @@ $message = "Email: $signup";
 $message = wordwrap($message, 70);
 
 // send email
-mail($to, $subject, $message, $headers);
+foreach($recipients as $to) {
+	mail($to, $subject, $message, $headers);
+}
 
 header( 'Location: http://layervote.com/success.html' ) ;
 ?>
